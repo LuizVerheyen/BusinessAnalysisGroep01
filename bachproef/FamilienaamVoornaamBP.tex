@@ -1,15 +1,15 @@
 %===============================================================================
-% LaTeX sjabloon voor de bachelorproef toegepaste informatica aan HOGENT
+% LaTeX sjabloon bachelorproef HOGENT - alleen de inhoud die nodig is
 %===============================================================================
 
 \documentclass[dutch,dit,thesis]{hogentreport}
 
 \usepackage{lipsum} % Voor voorbeeldtekst, kan later verwijderd worden
-\usepackage{graphicx} % Voor afbeeldingen
+\usepackage{graphicx}
 \graphicspath{{../graphics/}}
 
-% Voor broncode-highlighting
-\usepackage[chapter]{minted} % outputdir niet meer nodig
+% Broncode highlighting (optioneel, kan verwijderd worden)
+\usepackage[chapter]{minted}
 \usemintedstyle{solarized-light}
 \setminted{
     autogobble,
@@ -19,97 +19,92 @@
     tabsize=4
 }
 
-% Lijst van listings in TOC
-\renewcommand\listoflistingscaption{%
-    \IfLanguageName{dutch}{Lijst van codefragmenten}{List of listings}
-}
-\renewcommand\listingscaption{%
-    \IfLanguageName{dutch}{Codefragment}{Listing}
-}
-\renewcommand*\listoflistings{%
-    \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\listoflistingscaption}%
-    \listof{listing}{\listoflistingscaption}%
-}
+% Hyperlinks
+\usepackage{hyperref}
 
 % Bibliografie
-\addbibresource{bachproef.bib}
-\addbibresource{../voorstel/voorstel.bib}
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{bachproef.bib} % Dit bestand moet bestaan
 \defbibheading{bibempty}{}
 
 \renewcommand{\cleardoublepage}{\clearpage}
 \renewcommand{\arraystretch}{1.2}
 
-%% Document metadata
+%% Metadata
 \author{Luiz Verheyen}
 \supervisor{Gilles Blondeel}
 \title[Optionele ondertitel]{Titel van de bachelorproef}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
-\degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
+\degreesought{Professionele bachelor in de toegepaste informatica}
 \partialthesis{false}
 
-%% Begin document
 \begin{document}
 
 %---------- Front matter -------------------------------------------------------
 \frontmatter
 \maketitle
 
-%---------- Inhoudsopgave, lijsten --------------------------------------------
+%---------- Inhoudsopgave -----------------------------------------------------
 \tableofcontents
-\listoffigures
-\listoftables
-\listoflistings
 
 %---------- Kern ---------------------------------------------------------------
 \mainmatter{}
 
 %------ Voorblad informatie ------
 \chapter*{Voorblad informatie}
+\addcontentsline{toc}{chapter}{Voorblad informatie}
 \begin{itemize}
-    \item Klas: ... 
-    \item Groepsnummer: ... 
+    \item Klas: 2A1
+    \item Groepsnummer: ...
     \item Groepsleden: ...
     \item Onderwerp casus: ...
 \end{itemize}
 
 %------ Literatuurstudie ------
 \chapter{Literatuurstudie}
-\lipsum[1-2]
-% TODO: Voeg samenvatting van theorie toe
-% TODO: Formuleer eigen hypothese volgens de literatuur
+
+\section*{Samenvatting theorie}
+\addcontentsline{toc}{section}{Samenvatting theorie}
+
+Requirements engineering en business analysis vormen een cruciaal onderdeel van het softwareontwikkelingsproces. Het correct verzamelen, documenteren en valideren van eisen bepaalt in sterke mate het succes van een project. Volgens \parencite{robertson2012} biedt een gestructureerde aanpak bij het vastleggen van requirements een solide basis voor het ontwikkelen van systemen die voldoen aan de verwachtingen van de klant. \parencite{sommerville2016} benadrukt dat het ontbreken van duidelijke requirements vaak leidt tot vertragingen, hogere kosten en problemen bij de oplevering van software.
+
+In de praktijk is het belangrijk om niet alleen technische eisen te verzamelen, maar ook de zakelijke context en gebruikersbehoeften goed te begrijpen. \parencite{ireb2025} wijst erop dat iteratieve en collaboratieve methoden, zoals workshops en prototyping, helpen om een beter beeld te krijgen van de eisen en dat regelmatige terugkoppeling met stakeholders essentieel is. \parencite{volere2025} biedt methoden en templates die organisaties helpen om requirements systematisch te structureren en te controleren op volledigheid en consistentie. Websites zoals InfoQ \parencite{infoq2025} en Blueprint Systems \parencite{blueprint2025} geven voorbeelden van best practices en actuele trends in business analysis.
+
+Een goed uitgevoerde requirementsanalyse maakt het ook mogelijk om toekomstige problemen vroegtijdig te signaleren en stelt teams in staat om effectiever beslissingen te nemen tijdens het ontwikkelproces. Het is daarnaast van groot belang om wijzigingen in requirements goed te beheren en te documenteren, zodat traceerbaarheid gewaarborgd blijft \parencite{wiegers2013}.
+
+\section*{Eigen hypothese}
+\addcontentsline{toc}{section}{Eigen hypothese}
+
+Op basis van de literatuur kan worden aangenomen dat een gestructureerde en iteratieve aanpak van requirements engineering leidt tot meer betrouwbare en complete requirements. Hierdoor kan de kans op misverstanden, wijzigingen tijdens de ontwikkeling en projectrisico’s aanzienlijk worden verminderd. Wij verwachten dat organisaties die gebruikmaken van Volere-templates, workshops met stakeholders en iteratieve validatie van eisen, een hogere kwaliteit van requirements rapporten zullen behalen dan organisaties die deze methoden niet toepassen.
 
 %------ Vragen voor het interview ------
 \chapter{Vragen voor het interview}
-\lipsum[3]
-% TODO: Voeg hier de vragen voor het interview toe
+\begin{itemize}
+    \item Vraag 1: ...
+    \item Vraag 2: ...
+\end{itemize}
 
 %------ Analyse van het interview ------
 \chapter{Analyse van het interview}
+\section*{Antwoorden op de vragen}
+\addcontentsline{toc}{section}{Antwoorden op de vragen}
+\lipsum[3]
+
+\section*{Vergelijking met theorie}
+\addcontentsline{toc}{section}{Vergelijking met theorie}
 \lipsum[4]
-% TODO: Welke antwoorden kwamen er op de vragen
-% TODO: Vergelijk antwoorden met theorie
 
 %------ Reflectie ------
 \chapter{Reflectie}
+\addcontentsline{toc}{chapter}{Reflectie}
 \lipsum[5]
-% TODO: Beschrijf het verzamelen van informatie en eventuele weerstand
 
 %------ Bronvermelding ------
 \chapter*{Bronvermelding}
-% TODO: Voeg hier literatuur en AI-vermeldingen volgens APA 7 toe
-% Voorbeeld AI-vermelding:
-% OpenAI. (2025). ChatGPT [Large language model]. https://chat.openai.com/
+\addcontentsline{toc}{chapter}{Bronvermelding}
 
-%---------- Bijlagen -----------------------------------------------------------
-\appendix
-
-\chapter{Onderzoeksvoorstel}
-Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Hier kan je het voorstel opnemen of samenvatten.
-
-%---------- Backmatter, referentielijst ---------------------------------------
 \backmatter{}
-\setlength\bibitemsep{2pt}
 \printbibliography[heading=bibintoc]
 
 \end{document}
